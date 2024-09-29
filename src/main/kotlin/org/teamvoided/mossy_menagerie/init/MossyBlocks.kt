@@ -15,11 +15,11 @@ object MossyBlocks {
     fun init() = Unit
 
     val x = UndergroundConfiguredFeatures.MOSS_PATCH_BONE_MEAL
-    val RUSTY_MOSS = register("rusty_moss", MossyBlock(x, moss(MapColor.RED_TERRACOTTA)))
-    val RUSTY_MOSS_CARPET = register("rusty_moss_carpet", ParentedCarpetBlock((RUSTY_MOSS)))
+    val FIRE_MOSS = register("fire_moss", MossyBlock(x, moss(MapColor.RED_TERRACOTTA)))
+    val FIRE_MOSS_CARPET = register("fire_moss_carpet", ParentedCarpetBlock((FIRE_MOSS)))
 
-    val MAGMA_MOSS = register("magma_moss", MossyBlock(x, moss(MapColor.ORANGE_TERRACOTTA)))
-    val MAGMA_MOSS_CARPET = register("magma_moss_carpet", ParentedCarpetBlock((MAGMA_MOSS)))
+    val RUSTY_MOSS = register("rusty_moss", MossyBlock(x, moss(MapColor.ORANGE_TERRACOTTA)))
+    val RUSTY_MOSS_CARPET = register("rusty_moss_carpet", ParentedCarpetBlock((RUSTY_MOSS)))
 
     val RICH_MOSS = register("rich_moss", MossyBlock(x, moss(MapColor.YELLOW_TERRACOTTA)))
     val RICH_MOSS_CARPET = register("rich_moss_carpet", ParentedCarpetBlock((RICH_MOSS)))
