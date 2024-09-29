@@ -40,8 +40,7 @@ class MossyMenagerieData : DataGeneratorEntrypoint {
     }
 
     override fun buildRegistry(gen: RegistrySetBuilder) {
-//        gen.add(RegistryKeys.CONFIGURED_FEATURE, TemplateFeatures::boostrap)
-//        gen.add(RegistryKeys.PLACED_FEATURE, TemplateFeatures::boostrap)
+        gen.add(RegistryKeys.CONFIGURED_FEATURE, ::bootstrapConfiguredFeatures)
     }
 
     //Assets
@@ -50,7 +49,6 @@ class MossyMenagerieData : DataGeneratorEntrypoint {
         override fun generateTranslations(lookup: HolderLookup.Provider, gen: TranslationBuilder) {
             MossyItems.ITEMS.forEach { gen.add(it.translationKey, it.toId().lang()) }
             MossyTabs.MOSSY_TAB.key.ifPresent { gen.add(it, "Mossy Menagerie") }
-//            DFItemTags.ALL_TAGS.forEach { gen.add(it, it.id.lang()) }
         }
     }
 
@@ -103,13 +101,4 @@ class MossyMenagerieData : DataGeneratorEntrypoint {
         }
     }
 
-    //World Gen
-    class DynRegProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
-        FabricDynamicRegistryProvider(o, r) {
-        override fun getName(): String = "dwarf_forged/worldgen"
-        override fun configure(reg: HolderLookup.Provider, entries: Entries) {
-            entries.addAll(reg.getLookupOrThrow(RegistryKeys.CONFIGURED_FEATURE))
-            entries.addAll(reg.getLookupOrThrow(RegistryKeys.PLACED_FEATURE))
-        }
-    }
 }
