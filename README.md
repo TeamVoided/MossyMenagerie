@@ -1,2 +1,2 @@
-# The TeamVoided Template
+# MossyMenagerie
 Template mod by TeamVoided
