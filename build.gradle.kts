@@ -32,7 +32,7 @@ modSettings {
     entrypoint("client", "org.teamvoided.mossy_menagerie.MossyMenagerieClient::init")
     entrypoint("fabric-datagen", "org.teamvoided.mossy_menagerie.data.gen.MossyMenagerieData")
 
-    mixinFile("${modId()}.client.mixins.json")
+//    mixinFile("${modId()}.client.mixins.json")
 //    mixinFile("${modId()}.mixins.json")
 //    accessWidener("${modId()}.accesswidener")
 }

@@ -1,0 +1,18 @@
+package org.teamvoided.mossy_menagerie.block
+
+import net.minecraft.block.BlockState
+import net.minecraft.block.MossBlock
+import net.minecraft.registry.RegistryKey
+import net.minecraft.registry.RegistryKeys
+import net.minecraft.server.world.ServerWorld
+import net.minecraft.util.math.BlockPos
+import net.minecraft.util.random.RandomGenerator
+import net.minecraft.world.gen.feature.ConfiguredFeature
+
+@Suppress("MemberVisibilityCanBePrivate")
+class MossyBlock(val mossFeature: RegistryKey<ConfiguredFeature<*, *>>, settings: Settings) : MossBlock(settings) {
+    override fun fertilize(world: ServerWorld, random: RandomGenerator, pos: BlockPos, state: BlockState) {
+        world.registryManager.getOptional(RegistryKeys.CONFIGURED_FEATURE).flatMap { it.getHolder(mossFeature) }
+            .ifPresent { it.value().generate(world, world.chunkManager.chunkGenerator, random, pos.up()) }
+    }
+}
