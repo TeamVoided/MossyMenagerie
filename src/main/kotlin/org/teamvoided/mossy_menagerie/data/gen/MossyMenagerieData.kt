@@ -10,6 +10,8 @@ import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.RegistrySetBuilder
+import net.minecraft.registry.tag.BlockTags
+import net.minecraft.registry.tag.ItemTags
 import org.teamvoided.mossy_menagerie.MossyMenagerie.log
 import org.teamvoided.mossy_menagerie.block.ParentedCarpetBlock
 import org.teamvoided.mossy_menagerie.init.MossyBlocks
@@ -24,13 +26,16 @@ class MossyMenagerieData : DataGeneratorEntrypoint {
     override fun onInitializeDataGenerator(gen: FabricDataGenerator) {
         log.info("Hello from DataGen")
         val pack = gen.createPack()
-        //Assets
+        // Assets
         pack.addProvider(::EnLangProvider)
         pack.addProvider(::ModelProvider)
         // Data
         pack.addProvider(::BlockLootTableProvider)
         pack.addProvider(::RecipeProvider)
-        //World Gen
+        // Tags
+        val blocks = pack.addProvider(::BlockTagProvider)
+        pack.addProvider { o, r -> ItemTagProvider(o, r, blocks) }
+        // World Gen
         pack.addProvider(::DynRegProvider)
     }
 
@@ -78,12 +83,39 @@ class MossyMenagerieData : DataGeneratorEntrypoint {
         }
     }
 
+    // Tags
+    class BlockTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
+        FabricTagProvider.BlockTagProvider(o, r) {
+        override fun configure(wrapperLookup: HolderLookup.Provider) {
+            val mineableHoe = getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+
+            MossyBlocks.BLOCKS.forEach {
+                if (it is ParentedCarpetBlock) {
+                    mineableHoe.add(it)
+                    getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(it)
+                    getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(it)
+
+                    mineableHoe.add(it.parent)
+                    getOrCreateTagBuilder(BlockTags.DIRT).add(it.parent)
+                    getOrCreateTagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(it.parent)
+                    getOrCreateTagBuilder(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(it.parent)
+                    getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(it.parent)
+                }
+            }
+        }
+    }
+
+    class ItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>, p: BlockTagProvider) :
+        FabricTagProvider.ItemTagProvider(o, r, p) {
+        override fun configure(wrapperLookup: HolderLookup.Provider) {
+            copy(BlockTags.DIRT, ItemTags.DIRT)
+        }
+    }
+
     //World Gen
     class DynRegProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
         FabricDynamicRegistryProvider(o, r) {
-
         override fun getName(): String = "dwarf_forged/worldgen"
-
         override fun configure(reg: HolderLookup.Provider, entries: Entries) {
             entries.addAll(reg.getLookupOrThrow(RegistryKeys.CONFIGURED_FEATURE))
             entries.addAll(reg.getLookupOrThrow(RegistryKeys.PLACED_FEATURE))
