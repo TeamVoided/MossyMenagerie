@@ -130,8 +130,8 @@ fun BootstrapContext<ConfiguredFeature<*, *>>.makeMossy(
         SimpleBlockFeatureConfig(
             WeightedBlockStateProvider(
                 DataPool.builder<BlockState>()
-                    .addWeighted(Blocks.FLOWERING_AZALEA.defaultState, 4)
-                    .addWeighted(Blocks.AZALEA.defaultState, 7)
+//                    .addWeighted(Blocks.FLOWERING_AZALEA.defaultState, 4)
+//                    .addWeighted(Blocks.AZALEA.defaultState, 7)
                     .addWeighted(mossCarpet.defaultState, 25)
                     .addWeighted(Blocks.SHORT_GRASS.defaultState, 50)
                     .addWeighted(Blocks.TALL_GRASS.defaultState, 10)
