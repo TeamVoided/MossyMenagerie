@@ -56,13 +56,7 @@ class MossyMenagerieData : DataGeneratorEntrypoint {
 
     class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         override fun generateBlockStateModels(gen: BlockStateModelGenerator) {
-            MossyBlocks.BLOCKS.forEach {
-                when (it) {
-                    is ParentedCarpetBlock -> gen.registerCarpet(it.parent, it)
-//                    else -> gen.registerSimpleCubeAll(it)
-                    else -> {}
-                }
-            }
+            MossyBlocks.BLOCKS.filterIsInstance<ParentedCarpetBlock>().forEach { gen.registerCarpet(it.parent, it) }
         }
 
         //private val SINGLE_LAYER = listOf<Item>()
@@ -79,7 +73,7 @@ class MossyMenagerieData : DataGeneratorEntrypoint {
     class RecipeProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
         FabricRecipeProvider(o, r) {
         override fun generateRecipes(gen: RecipeExporter) {
-            MossyBlocks.BLOCKS.forEach { if (it is ParentedCarpetBlock) offerCarpetRecipe(gen, it, it.parent) }
+            MossyBlocks.BLOCKS.filterIsInstance<ParentedCarpetBlock>().forEach { offerCarpetRecipe(gen, it, it.parent) }
         }
     }
 
@@ -88,19 +82,16 @@ class MossyMenagerieData : DataGeneratorEntrypoint {
         FabricTagProvider.BlockTagProvider(o, r) {
         override fun configure(wrapperLookup: HolderLookup.Provider) {
             val mineableHoe = getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+            MossyBlocks.BLOCKS.filterIsInstance<ParentedCarpetBlock>().forEach {
+                mineableHoe.add(it)
+                getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(it)
+                getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(it)
 
-            MossyBlocks.BLOCKS.forEach {
-                if (it is ParentedCarpetBlock) {
-                    mineableHoe.add(it)
-                    getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(it)
-                    getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(it)
-
-                    mineableHoe.add(it.parent)
-                    getOrCreateTagBuilder(BlockTags.DIRT).add(it.parent)
-                    getOrCreateTagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(it.parent)
-                    getOrCreateTagBuilder(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(it.parent)
-                    getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(it.parent)
-                }
+                mineableHoe.add(it.parent)
+                getOrCreateTagBuilder(BlockTags.DIRT).add(it.parent)
+                getOrCreateTagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(it.parent)
+                getOrCreateTagBuilder(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(it.parent)
+                getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(it.parent)
             }
         }
     }
