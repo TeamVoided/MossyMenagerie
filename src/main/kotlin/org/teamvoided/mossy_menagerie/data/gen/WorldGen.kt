@@ -22,71 +22,9 @@ import net.minecraft.world.gen.feature.util.ConfiguredFeatureUtil
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil
 import net.minecraft.world.gen.stateprovider.BlockStateProvider
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.ARCANE_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.ARCANE_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.ASHEN_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.ASHEN_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.AZURE_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.AZURE_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.BONE_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.BONE_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.BRIGHT_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.BRIGHT_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.CHROME_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.CHROME_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.DARK_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.DARK_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.DUSKY_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.DUSKY_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.FIRE_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.FIRE_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.FROST_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.FROST_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.MARITIME_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.MARITIME_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.RICH_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.RICH_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.ROSY_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.ROSY_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.RUSTY_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.RUSTY_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.TWISTED_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.TWISTED_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.WOODED_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.WOODED_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.ARCANE_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.ARCANE_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.ASHEN_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.ASHEN_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.AZURE_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.AZURE_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.BONE_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.BONE_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.BRIGHT_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.BRIGHT_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.CHROME_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.CHROME_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.DARK_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.DARK_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.FIRE_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.FIRE_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.FROST_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.FROST_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.MARITIME_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.MARITIME_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.DUSKY_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.DUSKY_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.RICH_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.RICH_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.ROSY_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.ROSY_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.RUSTY_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.RUSTY_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.TWISTED_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.TWISTED_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.WOODED_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures.WOODED_MOSS_VEGETATION
 import java.util.concurrent.CompletableFuture
+import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures as Mcf
+import org.teamvoided.mossy_menagerie.init.MossyBlocks as Mb
 
 class DynRegProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
     FabricDynamicRegistryProvider(o, r) {
@@ -97,27 +35,108 @@ class DynRegProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Prov
     }
 }
 
-fun bootstrapConfiguredFeatures(context: BootstrapContext<ConfiguredFeature<*, *>>) {
-    context.makeMossy(FIRE_MOSS_VEGETATION, FIRE_MOSS_PATCH_BONE_MEAL, FIRE_MOSS, FIRE_MOSS_CARPET)
-    context.makeMossy(RUSTY_MOSS_VEGETATION, RUSTY_MOSS_PATCH_BONE_MEAL, RUSTY_MOSS, RUSTY_MOSS_CARPET)
-    context.makeMossy(RICH_MOSS_VEGETATION, RICH_MOSS_PATCH_BONE_MEAL, RICH_MOSS, RICH_MOSS_CARPET)
-    context.makeMossy(DARK_MOSS_VEGETATION, DARK_MOSS_PATCH_BONE_MEAL, DARK_MOSS, DARK_MOSS_CARPET)
-    context.makeMossy(BRIGHT_MOSS_VEGETATION, BRIGHT_MOSS_PATCH_BONE_MEAL, BRIGHT_MOSS, BRIGHT_MOSS_CARPET)
-    context.makeMossy(MARITIME_MOSS_VEGETATION, MARITIME_MOSS_PATCH_BONE_MEAL, MARITIME_MOSS, MARITIME_MOSS_CARPET)
-    context.makeMossy(FROST_MOSS_VEGETATION, FROST_MOSS_PATCH_BONE_MEAL, FROST_MOSS, FROST_MOSS_CARPET)
-    context.makeMossy(AZURE_MOSS_VEGETATION, AZURE_MOSS_PATCH_BONE_MEAL, AZURE_MOSS, AZURE_MOSS_CARPET)
-    context.makeMossy(ARCANE_MOSS_VEGETATION, ARCANE_MOSS_PATCH_BONE_MEAL, ARCANE_MOSS, ARCANE_MOSS_CARPET)
-    context.makeMossy(TWISTED_MOSS_VEGETATION, TWISTED_MOSS_PATCH_BONE_MEAL, TWISTED_MOSS, TWISTED_MOSS_CARPET)
-    context.makeMossy(ROSY_MOSS_VEGETATION, ROSY_MOSS_PATCH_BONE_MEAL, ROSY_MOSS, ROSY_MOSS_CARPET)
-    context.makeMossy(WOODED_MOSS_VEGETATION, WOODED_MOSS_PATCH_BONE_MEAL, WOODED_MOSS, WOODED_MOSS_CARPET)
-    context.makeMossy(ASHEN_MOSS_VEGETATION, ASHEN_MOSS_PATCH_BONE_MEAL, ASHEN_MOSS, ASHEN_MOSS_CARPET)
-    context.makeMossy(CHROME_MOSS_VEGETATION, CHROME_MOSS_PATCH_BONE_MEAL, CHROME_MOSS, CHROME_MOSS_CARPET)
-    context.makeMossy(DUSKY_MOSS_VEGETATION, DUSKY_MOSS_PATCH_BONE_MEAL, DUSKY_MOSS, DUSKY_MOSS_CARPET)
-    context.makeMossy(BONE_MOSS_VEGETATION, BONE_MOSS_PATCH_BONE_MEAL, BONE_MOSS, BONE_MOSS_CARPET)
+fun bootstrapConfiguredFeatures(c: BootstrapContext<ConfiguredFeature<*, *>>) {
+    c.makeMossy(
+        Mcf.FIRE_MOSS_VEGETATION,
+        Mcf.FIRE_MOSS_PATCH,
+        Mcf.FIRE_MOSS_PATCH_BONE_MEAL,
+        Mb.FIRE_MOSS, Mb.FIRE_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.RUSTY_MOSS_VEGETATION,
+        Mcf.RUSTY_MOSS_PATCH,
+        Mcf.RUSTY_MOSS_PATCH_BONE_MEAL,
+        Mb.RUSTY_MOSS, Mb.RUSTY_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.RICH_MOSS_VEGETATION,
+        Mcf.RICH_MOSS_PATCH,
+        Mcf.RICH_MOSS_PATCH_BONE_MEAL,
+        Mb.RICH_MOSS, Mb.RICH_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.DARK_MOSS_VEGETATION,
+        Mcf.DARK_MOSS_PATCH,
+        Mcf.DARK_MOSS_PATCH_BONE_MEAL,
+        Mb.DARK_MOSS, Mb.DARK_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.BRIGHT_MOSS_VEGETATION,
+        Mcf.BRIGHT_MOSS_PATCH,
+        Mcf.BRIGHT_MOSS_PATCH_BONE_MEAL,
+        Mb.BRIGHT_MOSS, Mb.BRIGHT_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.MARITIME_MOSS_VEGETATION,
+        Mcf.MARITIME_MOSS_PATCH,
+        Mcf.MARITIME_MOSS_PATCH_BONE_MEAL,
+        Mb.MARITIME_MOSS, Mb.MARITIME_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.FROST_MOSS_VEGETATION,
+        Mcf.FROST_MOSS_PATCH,
+        Mcf.FROST_MOSS_PATCH_BONE_MEAL,
+        Mb.FROST_MOSS, Mb.FROST_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.AZURE_MOSS_VEGETATION,
+        Mcf.AZURE_MOSS_PATCH,
+        Mcf.AZURE_MOSS_PATCH_BONE_MEAL,
+        Mb.AZURE_MOSS, Mb.AZURE_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.ARCANE_MOSS_VEGETATION,
+        Mcf.ARCANE_MOSS_PATCH,
+        Mcf.ARCANE_MOSS_PATCH_BONE_MEAL,
+        Mb.ARCANE_MOSS, Mb.ARCANE_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.TWISTED_MOSS_VEGETATION,
+        Mcf.TWISTED_MOSS_PATCH,
+        Mcf.TWISTED_MOSS_PATCH_BONE_MEAL,
+        Mb.TWISTED_MOSS, Mb.TWISTED_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.ROSY_MOSS_VEGETATION,
+        Mcf.ROSY_MOSS_PATCH,
+        Mcf.ROSY_MOSS_PATCH_BONE_MEAL,
+        Mb.ROSY_MOSS, Mb.ROSY_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.WOODED_MOSS_VEGETATION,
+        Mcf.WOODED_MOSS_PATCH,
+        Mcf.WOODED_MOSS_PATCH_BONE_MEAL,
+        Mb.WOODED_MOSS, Mb.WOODED_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.ASHEN_MOSS_VEGETATION,
+        Mcf.ASHEN_MOSS_PATCH,
+        Mcf.ASHEN_MOSS_PATCH_BONE_MEAL,
+        Mb.ASHEN_MOSS, Mb.ASHEN_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.CHROME_MOSS_VEGETATION,
+        Mcf.CHROME_MOSS_PATCH,
+        Mcf.CHROME_MOSS_PATCH_BONE_MEAL,
+        Mb.CHROME_MOSS, Mb.CHROME_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.DUSKY_MOSS_VEGETATION,
+        Mcf.DUSKY_MOSS_PATCH,
+        Mcf.DUSKY_MOSS_PATCH_BONE_MEAL,
+        Mb.DUSKY_MOSS, Mb.DUSKY_MOSS_CARPET
+    )
+    c.makeMossy(
+        Mcf.BONE_MOSS_VEGETATION,
+        Mcf.BONE_MOSS_PATCH,
+        Mcf.BONE_MOSS_PATCH_BONE_MEAL,
+        Mb.BONE_MOSS, Mb.BONE_MOSS_CARPET
+    )
 }
 
 fun BootstrapContext<ConfiguredFeature<*, *>>.makeMossy(
     vegetation: RegistryKey<ConfiguredFeature<*, *>>,
+    worldGen: RegistryKey<ConfiguredFeature<*, *>>,
     boneMeal: RegistryKey<ConfiguredFeature<*, *>>,
     moss: Block,
     mossCarpet: Block,
@@ -136,6 +155,18 @@ fun BootstrapContext<ConfiguredFeature<*, *>>.makeMossy(
                     .addWeighted(Blocks.SHORT_GRASS.defaultState, 50)
                     .addWeighted(Blocks.TALL_GRASS.defaultState, 10)
             )
+        )
+    )
+    ConfiguredFeatureUtil.register(
+        this,
+        worldGen,
+        Feature.VEGETATION_PATCH,
+        VegetationPatchFeatureConfig(
+            BlockTags.MOSS_REPLACEABLE,
+            BlockStateProvider.of(moss),
+            PlacedFeatureUtil.placedInline(cfgFeat.getHolderOrThrow(vegetation)),
+            VerticalSurfaceType.FLOOR,
+            ConstantIntProvider.create(1), 0.0f, 5, 0.8f, UniformIntProvider.create(4, 7), 0.3f
         )
     )
     ConfiguredFeatureUtil.register(
