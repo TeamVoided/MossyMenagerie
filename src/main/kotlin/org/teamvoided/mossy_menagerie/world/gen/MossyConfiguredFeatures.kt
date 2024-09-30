@@ -49,8 +49,8 @@ object MossyConfiguredFeatures {
     val CHROME_MOSS_VEGETATION = create("chrome_moss_vegetation")
     val CHROME_MOSS_PATCH_BONE_MEAL = create("chrome_moss_patch_bone_meal")
 
-    val PALE_MOSS_VEGETATION = create("pale_moss_vegetation")
-    val PALE_MOSS_PATCH_BONE_MEAL = create("pale_moss_patch_bone_meal")
+    val DUSKY_MOSS_VEGETATION = create("pale_moss_vegetation")
+    val DUSKY_MOSS_PATCH_BONE_MEAL = create("pale_moss_patch_bone_meal")
 
     val BONE_MOSS_VEGETATION = create("bone_moss_vegetation")
     val BONE_MOSS_PATCH_BONE_MEAL = create("bone_moss_patch_bone_meal")

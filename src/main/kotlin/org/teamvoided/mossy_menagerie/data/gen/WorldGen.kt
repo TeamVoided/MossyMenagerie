@@ -36,14 +36,14 @@ import org.teamvoided.mossy_menagerie.init.MossyBlocks.CHROME_MOSS
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.CHROME_MOSS_CARPET
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.DARK_MOSS
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.DARK_MOSS_CARPET
+import org.teamvoided.mossy_menagerie.init.MossyBlocks.DUSKY_MOSS
+import org.teamvoided.mossy_menagerie.init.MossyBlocks.DUSKY_MOSS_CARPET
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.FIRE_MOSS
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.FIRE_MOSS_CARPET
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.FROST_MOSS
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.FROST_MOSS_CARPET
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.MARITIME_MOSS
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.MARITIME_MOSS_CARPET
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.PALE_MOSS
-import org.teamvoided.mossy_menagerie.init.MossyBlocks.PALE_MOSS_CARPET
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.RICH_MOSS
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.RICH_MOSS_CARPET
 import org.teamvoided.mossy_menagerie.init.MossyBlocks.ROSY_MOSS
@@ -74,8 +74,8 @@ import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.FROST_MO
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.FROST_MOSS_VEGETATION
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.MARITIME_MOSS_PATCH_BONE_MEAL
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.MARITIME_MOSS_VEGETATION
-import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.PALE_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.PALE_MOSS_VEGETATION
+import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.DUSKY_MOSS_PATCH_BONE_MEAL
+import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.DUSKY_MOSS_VEGETATION
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.RICH_MOSS_PATCH_BONE_MEAL
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.RICH_MOSS_VEGETATION
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.ROSY_MOSS_PATCH_BONE_MEAL
@@ -112,7 +112,7 @@ fun bootstrapConfiguredFeatures(context: BootstrapContext<ConfiguredFeature<*, *
     context.makeMossy(WOODED_MOSS_VEGETATION, WOODED_MOSS_PATCH_BONE_MEAL, WOODED_MOSS, WOODED_MOSS_CARPET)
     context.makeMossy(ASHEN_MOSS_VEGETATION, ASHEN_MOSS_PATCH_BONE_MEAL, ASHEN_MOSS, ASHEN_MOSS_CARPET)
     context.makeMossy(CHROME_MOSS_VEGETATION, CHROME_MOSS_PATCH_BONE_MEAL, CHROME_MOSS, CHROME_MOSS_CARPET)
-    context.makeMossy(PALE_MOSS_VEGETATION, PALE_MOSS_PATCH_BONE_MEAL, PALE_MOSS, PALE_MOSS_CARPET)
+    context.makeMossy(DUSKY_MOSS_VEGETATION, DUSKY_MOSS_PATCH_BONE_MEAL, DUSKY_MOSS, DUSKY_MOSS_CARPET)
     context.makeMossy(BONE_MOSS_VEGETATION, BONE_MOSS_PATCH_BONE_MEAL, BONE_MOSS, BONE_MOSS_CARPET)
 }
 

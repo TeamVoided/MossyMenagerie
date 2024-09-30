@@ -20,7 +20,7 @@ import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.DARK_MOS
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.FIRE_MOSS_PATCH_BONE_MEAL
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.FROST_MOSS_PATCH_BONE_MEAL
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.MARITIME_MOSS_PATCH_BONE_MEAL
-import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.PALE_MOSS_PATCH_BONE_MEAL
+import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.DUSKY_MOSS_PATCH_BONE_MEAL
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.RICH_MOSS_PATCH_BONE_MEAL
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.ROSY_MOSS_PATCH_BONE_MEAL
 import org.teamvoided.mossy_menagerie.world.gen.MossyConfiguredFeatures.RUSTY_MOSS_PATCH_BONE_MEAL
@@ -77,8 +77,8 @@ object MossyBlocks {
     val CHROME_MOSS = register("chrome_moss", MossyBlock(CHROME_MOSS_PATCH_BONE_MEAL, moss(MapColor.GRAY_TERRACOTTA)))
     val CHROME_MOSS_CARPET = register("chrome_moss_carpet", ParentedCarpetBlock((CHROME_MOSS)))
 
-    val PALE_MOSS = register("pale_moss", MossyBlock(PALE_MOSS_PATCH_BONE_MEAL, moss(MapColor.LIGHT_GRAY_TERRACOTTA)))
-    val PALE_MOSS_CARPET = register("pale_moss_carpet", ParentedCarpetBlock((PALE_MOSS)))
+    val DUSKY_MOSS = register("dusky_moss", MossyBlock(DUSKY_MOSS_PATCH_BONE_MEAL, moss(MapColor.LIGHT_GRAY_TERRACOTTA)))
+    val DUSKY_MOSS_CARPET = register("dusky_moss_carpet", ParentedCarpetBlock((DUSKY_MOSS)))
 
     val BONE_MOSS = register("bone_moss", MossyBlock(BONE_MOSS_PATCH_BONE_MEAL, moss(MapColor.WHITE_TERRACOTTA)))
     val BONE_MOSS_CARPET = register("bone_moss_carpet", ParentedCarpetBlock((BONE_MOSS)))
