@@ -1,4 +1,4 @@
-package org.teamvoided.mossy_menagerie.world.gen
+package org.teamvoided.mossy_menagerie.data.world.gen
 
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
