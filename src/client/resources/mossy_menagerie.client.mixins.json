@@ -4,7 +4,6 @@
   "package": "org.teamvoided.mossy_menagerie.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
