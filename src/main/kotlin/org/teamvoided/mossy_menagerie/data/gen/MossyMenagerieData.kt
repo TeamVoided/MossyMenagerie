@@ -3,19 +3,18 @@ package org.teamvoided.mossy_menagerie.data.gen
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
-import net.fabricmc.fabric.api.datagen.v1.provider.*
-import net.minecraft.block.Blocks
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.data.client.ItemModelGenerator
 import net.minecraft.data.client.model.BlockStateModelGenerator
 import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.RegistrySetBuilder
-import net.minecraft.registry.tag.BlockTags
-import net.minecraft.registry.tag.ItemTags
 import org.teamvoided.mossy_menagerie.MossyMenagerie.log
 import org.teamvoided.mossy_menagerie.block.ParentedCarpetBlock
-import org.teamvoided.mossy_menagerie.data.MossyBlockTags
 import org.teamvoided.mossy_menagerie.init.MossyBlocks
 import org.teamvoided.mossy_menagerie.init.MossyItems
 import org.teamvoided.mossy_menagerie.init.MossyTabs
@@ -37,6 +36,7 @@ object MossyMenagerieData : DataGeneratorEntrypoint {
         // Tags
         val blocks = pack.addProvider(::BlockTagProvider)
         pack.addProvider { o, r -> ItemTagProvider(o, r, blocks) }
+        pack.addProvider(::BiomeTagProvider)
         // World Gen
         pack.addProvider(::DynRegProvider)
     }
@@ -77,46 +77,4 @@ object MossyMenagerieData : DataGeneratorEntrypoint {
             MossyBlocks.BLOCKS.filterIsInstance<ParentedCarpetBlock>().forEach { offerCarpetRecipe(gen, it, it.parent) }
         }
     }
-
-    // Tags
-    class BlockTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
-        FabricTagProvider.BlockTagProvider(o, r) {
-        override fun configure(wrapperLookup: HolderLookup.Provider) {
-            val mineableHoe = getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
-            MossyBlocks.BLOCKS.filterIsInstance<ParentedCarpetBlock>().forEach {
-                mineableHoe.add(it)
-                getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(it)
-                getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(it)
-                getOrCreateTagBuilder(MossyBlockTags.MOSSY_CARPETS).add(it)
-
-                mineableHoe.add(it.parent)
-                getOrCreateTagBuilder(BlockTags.DIRT).add(it.parent)
-                getOrCreateTagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(it.parent)
-                getOrCreateTagBuilder(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(it.parent)
-                getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(it.parent)
-                getOrCreateTagBuilder(MossyBlockTags.MOSS).add(it.parent)
-            }
-            getOrCreateTagBuilder(MossyBlockTags.MOSS).add(Blocks.MOSS_BLOCK)
-            getOrCreateTagBuilder(MossyBlockTags.MOSS_CARPETS)
-                .add(Blocks.MOSS_CARPET)
-                .forceAddTag(MossyBlockTags.MOSSY_CARPETS)
-
-            getOrCreateTagBuilder(MossyBlockTags.MOSS_CAN_GROW_UNDER)
-                .forceAddTag(BlockTags.REPLACEABLE)
-                .forceAddTag(BlockTags.REPLACEABLE_BY_TREES)
-                .forceAddTag(BlockTags.FLOWERS)
-                .forceAddTag(BlockTags.SAPLINGS)
-                .forceAddTag(MossyBlockTags.MOSS_CARPETS)
-                .add(Blocks.TORCH, Blocks.REDSTONE_TORCH, Blocks.SOUL_TORCH)
-                .add(Blocks.WALL_TORCH, Blocks.REDSTONE_WALL_TORCH, Blocks.SOUL_WALL_TORCH)
-        }
-    }
-
-    class ItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>, p: BlockTagProvider) :
-        FabricTagProvider.ItemTagProvider(o, r, p) {
-        override fun configure(wrapperLookup: HolderLookup.Provider) {
-            copy(BlockTags.DIRT, ItemTags.DIRT)
-        }
-    }
-
 }

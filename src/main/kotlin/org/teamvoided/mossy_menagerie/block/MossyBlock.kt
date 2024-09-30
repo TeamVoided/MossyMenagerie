@@ -9,7 +9,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.random.RandomGenerator
 import net.minecraft.world.WorldView
 import net.minecraft.world.gen.feature.ConfiguredFeature
-import org.teamvoided.mossy_menagerie.data.MossyBlockTags
+import org.teamvoided.mossy_menagerie.data.tags.MossyBlockTags
 
 @Suppress("MemberVisibilityCanBePrivate")
 class MossyBlock(val mossFeature: RegistryKey<ConfiguredFeature<*, *>>, settings: Settings) : MossBlock(settings) {

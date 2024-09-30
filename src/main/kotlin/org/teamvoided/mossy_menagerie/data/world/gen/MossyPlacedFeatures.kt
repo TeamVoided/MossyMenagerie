@@ -9,7 +9,7 @@ import org.teamvoided.mossy_menagerie.utils.key
 object MossyPlacedFeatures {
     val FIRE_MOSS_PATCH = create("fire_moss_patch")
     val RUSTY_MOSS_PATCH = create("rusty_moss_patch")
-    val RICH_MOSS_PATCH = create("rich_moss_patch")
+//    val RICH_MOSS_PATCH = create("rich_moss_patch")
     val DARK_MOSS_PATCH = create("dark_moss_patch")
     val BRIGHT_MOSS_PATCH = create("bright_moss_patch")
     val MARITIME_MOSS_PATCH = create("maritime_moss_patch")

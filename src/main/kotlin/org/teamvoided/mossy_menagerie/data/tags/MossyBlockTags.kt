@@ -1,4 +1,4 @@
-package org.teamvoided.mossy_menagerie.data
+package org.teamvoided.mossy_menagerie.data.tags
 
 import net.minecraft.registry.RegistryKeys
 import org.teamvoided.mossy_menagerie.MossyMenagerie.id

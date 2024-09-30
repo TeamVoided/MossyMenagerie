@@ -149,6 +149,17 @@ fun bootstrapPlacedFeatures(c: BootstrapContext<PlacedFeature>) {
         RandomOffsetPlacementModifier.vertical(ConstantIntProvider.create(1)),
         BiomePlacementModifier.getInstance()
     )
+    PlacedFeatureUtil.register(
+        c,
+        Mpf.DARK_MOSS_PATCH,
+        cfgFeat.getHolderOrThrow(Mcf.DARK_MOSS_PATCH),
+        CountPlacementModifier.create(10),
+        InSquarePlacementModifier.getInstance(),
+        PlacedFeatureUtil.BOTTOM_TO_MAX_TERRAIN_HEIGHT_RANGE,
+        EnvironmentScanPlacementModifier.create(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
+        RandomOffsetPlacementModifier.vertical(ConstantIntProvider.create(1)),
+        BiomePlacementModifier.getInstance()
+    )
 }
 
 fun BootstrapContext<ConfiguredFeature<*, *>>.makeMossy(

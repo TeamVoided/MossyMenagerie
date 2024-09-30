@@ -8,7 +8,7 @@ import net.minecraft.world.StructureWorldAccess
 import net.minecraft.world.WorldAccess
 import net.minecraft.world.gen.feature.VegetationPatchFeature
 import net.minecraft.world.gen.feature.util.FeatureContext
-import org.teamvoided.mossy_menagerie.data.MossyBlockTags
+import org.teamvoided.mossy_menagerie.data.tags.MossyBlockTags
 import java.util.function.Predicate
 import net.minecraft.world.gen.feature.VegetationPatchFeatureConfig as VpfCfg
 
