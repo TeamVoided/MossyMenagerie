@@ -11,13 +11,13 @@ import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.tag.BlockTags
 import net.minecraft.util.collection.DataPool
+import net.minecraft.util.math.Direction
 import net.minecraft.util.math.VerticalSurfaceType
 import net.minecraft.util.math.int_provider.ConstantIntProvider
 import net.minecraft.util.math.int_provider.UniformIntProvider
-import net.minecraft.world.gen.feature.ConfiguredFeature
-import net.minecraft.world.gen.feature.Feature
-import net.minecraft.world.gen.feature.SimpleBlockFeatureConfig
-import net.minecraft.world.gen.feature.VegetationPatchFeatureConfig
+import net.minecraft.world.gen.blockpredicate.BlockPredicate
+import net.minecraft.world.gen.decorator.*
+import net.minecraft.world.gen.feature.*
 import net.minecraft.world.gen.feature.util.ConfiguredFeatureUtil
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil
 import net.minecraft.world.gen.stateprovider.BlockStateProvider
@@ -25,6 +25,7 @@ import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider
 import org.teamvoided.mossy_menagerie.init.MossyFeatures.MOSSY_VEGETATION_PATCH
 import java.util.concurrent.CompletableFuture
 import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures as Mcf
+import org.teamvoided.mossy_menagerie.data.world.gen.MossyPlacedFeatures as Mpf
 import org.teamvoided.mossy_menagerie.init.MossyBlocks as Mb
 
 class DynRegProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
@@ -132,6 +133,21 @@ fun bootstrapConfiguredFeatures(c: BootstrapContext<ConfiguredFeature<*, *>>) {
         Mcf.BONE_MOSS_PATCH,
         Mcf.BONE_MOSS_PATCH_BONE_MEAL,
         Mb.BONE_MOSS, Mb.BONE_MOSS_CARPET
+    )
+}
+
+fun bootstrapPlacedFeatures(c: BootstrapContext<PlacedFeature>) {
+    val cfgFeat = c.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE)
+    PlacedFeatureUtil.register(
+        c,
+        Mpf.FIRE_MOSS_PATCH,
+        cfgFeat.getHolderOrThrow(Mcf.FIRE_MOSS_PATCH),
+        CountPlacementModifier.create(10),
+        InSquarePlacementModifier.getInstance(),
+        PlacedFeatureUtil.BOTTOM_TO_MAX_TERRAIN_HEIGHT_RANGE,
+        EnvironmentScanPlacementModifier.create(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12),
+        RandomOffsetPlacementModifier.vertical(ConstantIntProvider.create(1)),
+        BiomePlacementModifier.getInstance()
     )
 }
 

@@ -43,6 +43,7 @@ object MossyMenagerieData : DataGeneratorEntrypoint {
 
     override fun buildRegistry(gen: RegistrySetBuilder) {
         gen.add(RegistryKeys.CONFIGURED_FEATURE, ::bootstrapConfiguredFeatures)
+        gen.add(RegistryKeys.PLACED_FEATURE, ::bootstrapPlacedFeatures)
     }
 
     //Assets
