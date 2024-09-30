@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.*
+import net.minecraft.block.Blocks
 import net.minecraft.data.client.ItemModelGenerator
 import net.minecraft.data.client.model.BlockStateModelGenerator
 import net.minecraft.data.server.recipe.RecipeExporter
@@ -14,6 +15,7 @@ import net.minecraft.registry.tag.BlockTags
 import net.minecraft.registry.tag.ItemTags
 import org.teamvoided.mossy_menagerie.MossyMenagerie.log
 import org.teamvoided.mossy_menagerie.block.ParentedCarpetBlock
+import org.teamvoided.mossy_menagerie.data.MossyBlockTags
 import org.teamvoided.mossy_menagerie.init.MossyBlocks
 import org.teamvoided.mossy_menagerie.init.MossyItems
 import org.teamvoided.mossy_menagerie.init.MossyTabs
@@ -22,7 +24,7 @@ import org.teamvoided.mossy_menagerie.utils.toId
 import java.util.concurrent.CompletableFuture
 
 @Suppress("unused")
-class MossyMenagerieData : DataGeneratorEntrypoint {
+object MossyMenagerieData : DataGeneratorEntrypoint {
     override fun onInitializeDataGenerator(gen: FabricDataGenerator) {
         log.info("Hello from DataGen")
         val pack = gen.createPack()
@@ -84,13 +86,28 @@ class MossyMenagerieData : DataGeneratorEntrypoint {
                 mineableHoe.add(it)
                 getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(it)
                 getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(it)
+                getOrCreateTagBuilder(MossyBlockTags.MOSSY_CARPETS).add(it)
 
                 mineableHoe.add(it.parent)
                 getOrCreateTagBuilder(BlockTags.DIRT).add(it.parent)
                 getOrCreateTagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(it.parent)
                 getOrCreateTagBuilder(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(it.parent)
                 getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(it.parent)
+                getOrCreateTagBuilder(MossyBlockTags.MOSS).add(it.parent)
             }
+            getOrCreateTagBuilder(MossyBlockTags.MOSS).add(Blocks.MOSS_BLOCK)
+            getOrCreateTagBuilder(MossyBlockTags.MOSS_CARPETS)
+                .add(Blocks.MOSS_CARPET)
+                .forceAddTag(MossyBlockTags.MOSSY_CARPETS)
+
+            getOrCreateTagBuilder(MossyBlockTags.MOSS_CAN_GROW_UNDER)
+                .forceAddTag(BlockTags.REPLACEABLE)
+                .forceAddTag(BlockTags.REPLACEABLE_BY_TREES)
+                .forceAddTag(BlockTags.FLOWERS)
+                .forceAddTag(BlockTags.SAPLINGS)
+                .forceAddTag(MossyBlockTags.MOSS_CARPETS)
+                .add(Blocks.TORCH, Blocks.REDSTONE_TORCH, Blocks.SOUL_TORCH)
+                .add(Blocks.WALL_TORCH, Blocks.REDSTONE_WALL_TORCH, Blocks.SOUL_WALL_TORCH)
         }
     }
 
