@@ -22,6 +22,7 @@ import net.minecraft.world.gen.feature.util.ConfiguredFeatureUtil
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil
 import net.minecraft.world.gen.stateprovider.BlockStateProvider
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider
+import org.teamvoided.mossy_menagerie.init.MossyFeatures.MOSSY_VEGETATION_PATCH
 import java.util.concurrent.CompletableFuture
 import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures as Mcf
 import org.teamvoided.mossy_menagerie.init.MossyBlocks as Mb
@@ -160,7 +161,7 @@ fun BootstrapContext<ConfiguredFeature<*, *>>.makeMossy(
     ConfiguredFeatureUtil.register(
         this,
         worldGen,
-        Feature.VEGETATION_PATCH,
+        MOSSY_VEGETATION_PATCH,
         VegetationPatchFeatureConfig(
             BlockTags.MOSS_REPLACEABLE,
             BlockStateProvider.of(moss),
@@ -172,7 +173,7 @@ fun BootstrapContext<ConfiguredFeature<*, *>>.makeMossy(
     ConfiguredFeatureUtil.register(
         this,
         boneMeal,
-        Feature.VEGETATION_PATCH,
+        MOSSY_VEGETATION_PATCH,
         VegetationPatchFeatureConfig(
             BlockTags.MOSS_REPLACEABLE,
             BlockStateProvider.of(moss),

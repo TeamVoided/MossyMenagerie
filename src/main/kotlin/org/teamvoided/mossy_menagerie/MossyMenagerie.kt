@@ -3,10 +3,7 @@ package org.teamvoided.mossy_menagerie
 import net.minecraft.util.Identifier
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.teamvoided.mossy_menagerie.init.MossyTrades
-import org.teamvoided.mossy_menagerie.init.MossyBlocks
-import org.teamvoided.mossy_menagerie.init.MossyItems
-import org.teamvoided.mossy_menagerie.init.MossyTabs
+import org.teamvoided.mossy_menagerie.init.*
 
 @Suppress("unused")
 object MossyMenagerie {
@@ -19,9 +16,11 @@ object MossyMenagerie {
         log.info("Time for moss~")
         MossyItems.init()
         MossyBlocks.init()
+        MossyFeatures.init()
         MossyTabs.init()
         MossyTrades.init()
     }
 
     fun id(path: String): Identifier = Identifier.of(MODID, path)
+    fun id(ns: String, path: String): Identifier = Identifier.of(ns, path)
 }
