@@ -39,22 +39,22 @@ class DynRegProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Prov
 
 fun bootstrapConfiguredFeatures(c: BootstrapContext<ConfiguredFeature<*, *>>) {
     c.makeMossy(
-        Mcf.FIRE_MOSS_VEGETATION,
-        Mcf.FIRE_MOSS_PATCH,
-        Mcf.FIRE_MOSS_PATCH_BONE_MEAL,
-        Mb.FIRE_MOSS, Mb.FIRE_MOSS_CARPET
+        Mcf.CRIMSON_MOSS_VEGETATION,
+        Mcf.CRIMSON_MOSS_PATCH,
+        Mcf.CRIMSON_MOSS_PATCH_BONE_MEAL,
+        Mb.CRIMSON_MOSS.block, Mb.CRIMSON_MOSS.carpet
     )
     c.makeMossy(
-        Mcf.RUSTY_MOSS_VEGETATION,
-        Mcf.RUSTY_MOSS_PATCH,
-        Mcf.RUSTY_MOSS_PATCH_BONE_MEAL,
-        Mb.RUSTY_MOSS, Mb.RUSTY_MOSS_CARPET
+        Mcf.MAGMATIC_MOSS_VEGETATION,
+        Mcf.MAGMATIC_MOSS_PATCH,
+        Mcf.MAGMATIC_MOSS_PATCH_BONE_MEAL,
+        Mb.MAGMATIC_MOSS, Mb.MAGMATIC_MOSS_CARPET
     )
     c.makeMossy(
-        Mcf.RICH_MOSS_VEGETATION,
-        Mcf.RICH_MOSS_PATCH,
-        Mcf.RICH_MOSS_PATCH_BONE_MEAL,
-        Mb.RICH_MOSS, Mb.RICH_MOSS_CARPET
+        Mcf.ROYAL_MOSS_VEGETATION,
+        Mcf.ROYAL_MOSS_PATCH,
+        Mcf.ROYAL_MOSS_PATCH_BONE_MEAL,
+        Mb.ROYAL_MOSS, Mb.ROYAL_MOSS_CARPET
     )
     c.makeMossy(
         Mcf.DARK_MOSS_VEGETATION,
@@ -63,10 +63,10 @@ fun bootstrapConfiguredFeatures(c: BootstrapContext<ConfiguredFeature<*, *>>) {
         Mb.DARK_MOSS, Mb.DARK_MOSS_CARPET
     )
     c.makeMossy(
-        Mcf.BRIGHT_MOSS_VEGETATION,
-        Mcf.BRIGHT_MOSS_PATCH,
-        Mcf.BRIGHT_MOSS_PATCH_BONE_MEAL,
-        Mb.BRIGHT_MOSS, Mb.BRIGHT_MOSS_CARPET
+        Mcf.GLOWING_MOSS_VEGETATION,
+        Mcf.GLOWING_MOSS_PATCH,
+        Mcf.GLOWING_MOSS_PATCH_BONE_MEAL,
+        Mb.GLOWING_MOSS, Mb.GLOWING_MOSS_CARPET
     )
     c.makeMossy(
         Mcf.MARITIME_MOSS_VEGETATION,
@@ -75,10 +75,10 @@ fun bootstrapConfiguredFeatures(c: BootstrapContext<ConfiguredFeature<*, *>>) {
         Mb.MARITIME_MOSS, Mb.MARITIME_MOSS_CARPET
     )
     c.makeMossy(
-        Mcf.FROST_MOSS_VEGETATION,
-        Mcf.FROST_MOSS_PATCH,
-        Mcf.FROST_MOSS_PATCH_BONE_MEAL,
-        Mb.FROST_MOSS, Mb.FROST_MOSS_CARPET
+        Mcf.WARPED_MOSS_VEGETATION,
+        Mcf.WARPED_MOSS_PATCH,
+        Mcf.WARPED_MOSS_PATCH_BONE_MEAL,
+        Mb.WARPED_MOSS, Mb.WARPED_MOSS_CARPET
     )
     c.makeMossy(
         Mcf.AZURE_MOSS_VEGETATION,
@@ -105,10 +105,10 @@ fun bootstrapConfiguredFeatures(c: BootstrapContext<ConfiguredFeature<*, *>>) {
         Mb.ROSY_MOSS, Mb.ROSY_MOSS_CARPET
     )
     c.makeMossy(
-        Mcf.WOODED_MOSS_VEGETATION,
-        Mcf.WOODED_MOSS_PATCH,
-        Mcf.WOODED_MOSS_PATCH_BONE_MEAL,
-        Mb.WOODED_MOSS, Mb.WOODED_MOSS_CARPET
+        Mcf.ANCIENT_MOSS_VEGETATION,
+        Mcf.ANCIENT_MOSS_PATCH,
+        Mcf.ANCIENT_MOSS_PATCH_BONE_MEAL,
+        Mb.ANCIENT_MOSS, Mb.ANCIENT_MOSS_CARPET
     )
     c.makeMossy(
         Mcf.ASHEN_MOSS_VEGETATION,
@@ -140,8 +140,8 @@ fun bootstrapPlacedFeatures(c: BootstrapContext<PlacedFeature>) {
     val cfgFeat = c.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE)
     PlacedFeatureUtil.register(
         c,
-        Mpf.FIRE_MOSS_PATCH,
-        cfgFeat.getHolderOrThrow(Mcf.FIRE_MOSS_PATCH),
+        Mpf.CRIMSON_MOSS_PATCH,
+        cfgFeat.getHolderOrThrow(Mcf.CRIMSON_MOSS_PATCH),
         CountPlacementModifier.create(10),
         InSquarePlacementModifier.getInstance(),
         PlacedFeatureUtil.BOTTOM_TO_MAX_TERRAIN_HEIGHT_RANGE,

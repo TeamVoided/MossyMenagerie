@@ -7,33 +7,33 @@ import org.teamvoided.mossy_menagerie.MossyMenagerie.id
 import org.teamvoided.mossy_menagerie.utils.key
 
 object MossyConfiguredFeatures {
-    val FIRE_MOSS_VEGETATION = create("fire_moss_vegetation")
-    val FIRE_MOSS_PATCH = create("fire_moss_patch")
-    val FIRE_MOSS_PATCH_BONE_MEAL = create("fire_moss_patch_bone_meal")
+    val CRIMSON_MOSS_VEGETATION = create("crimson_moss_vegetation")
+    val CRIMSON_MOSS_PATCH = create("crimson_moss_patch")
+    val CRIMSON_MOSS_PATCH_BONE_MEAL = create("crimson_moss_patch_bone_meal")
 
-    val RUSTY_MOSS_VEGETATION = create("rusty_moss_vegetation")
-    val RUSTY_MOSS_PATCH = create("rusty_moss_patch")
-    val RUSTY_MOSS_PATCH_BONE_MEAL = create("rusty_moss_patch_bone_meal")
+    val MAGMATIC_MOSS_VEGETATION = create("magmatic_moss_vegetation")
+    val MAGMATIC_MOSS_PATCH = create("magmatic_moss_patch")
+    val MAGMATIC_MOSS_PATCH_BONE_MEAL = create("magmatic_moss_patch_bone_meal")
 
-    val RICH_MOSS_VEGETATION = create("rich_moss_vegetation")
-    val RICH_MOSS_PATCH = create("rich_moss_patch")
-    val RICH_MOSS_PATCH_BONE_MEAL = create("rich_moss_patch_bone_meal")
+    val ROYAL_MOSS_VEGETATION = create("royal_moss_vegetation")
+    val ROYAL_MOSS_PATCH = create("royal_moss_patch")
+    val ROYAL_MOSS_PATCH_BONE_MEAL = create("royal_moss_patch_bone_meal")
+
+    val GLOWING_MOSS_VEGETATION = create("glowing_moss_vegetation")
+    val GLOWING_MOSS_PATCH = create("glowing_moss_patch")
+    val GLOWING_MOSS_PATCH_BONE_MEAL = create("glowing_moss_patch_bone_meal")
 
     val DARK_MOSS_VEGETATION = create("dark_moss_vegetation")
     val DARK_MOSS_PATCH = create("dark_moss_patch")
     val DARK_MOSS_PATCH_BONE_MEAL = create("dark_moss_patch_bone_meal")
 
-    val BRIGHT_MOSS_VEGETATION = create("bright_moss_vegetation")
-    val BRIGHT_MOSS_PATCH = create("bright_moss_patch")
-    val BRIGHT_MOSS_PATCH_BONE_MEAL = create("bright_moss_patch_bone_meal")
-
     val MARITIME_MOSS_VEGETATION = create("maritime_moss_vegetation")
     val MARITIME_MOSS_PATCH = create("maritime_moss_patch")
     val MARITIME_MOSS_PATCH_BONE_MEAL = create("maritime_moss_patch_bone_meal")
 
-    val FROST_MOSS_VEGETATION = create("frost_moss_vegetation")
-    val FROST_MOSS_PATCH = create("frost_moss_patch")
-    val FROST_MOSS_PATCH_BONE_MEAL = create("frost_moss_patch_bone_meal")
+    val WARPED_MOSS_VEGETATION = create("warped_moss_vegetation")
+    val WARPED_MOSS_PATCH = create("warped_moss_patch")
+    val WARPED_MOSS_PATCH_BONE_MEAL = create("warped_moss_patch_bone_meal")
 
     val AZURE_MOSS_VEGETATION = create("azure_moss_vegetation")
     val AZURE_MOSS_PATCH = create("azure_moss_patch")
@@ -51,9 +51,9 @@ object MossyConfiguredFeatures {
     val ROSY_MOSS_PATCH = create("rosy_moss_patch")
     val ROSY_MOSS_PATCH_BONE_MEAL = create("rosy_moss_patch_bone_meal")
 
-    val WOODED_MOSS_VEGETATION = create("wooded_moss_vegetation")
-    val WOODED_MOSS_PATCH = create("wooded_moss_patch")
-    val WOODED_MOSS_PATCH_BONE_MEAL = create("wooded_moss_patch_bone_meal")
+    val ANCIENT_MOSS_VEGETATION = create("ancient_moss_vegetation")
+    val ANCIENT_MOSS_PATCH = create("ancient_moss_patch")
+    val ANCIENT_MOSS_PATCH_BONE_MEAL = create("ancient_moss_patch_bone_meal")
 
     val ASHEN_MOSS_VEGETATION = create("ashen_moss_vegetation")
     val ASHEN_MOSS_PATCH = create("ashen_moss_patch")

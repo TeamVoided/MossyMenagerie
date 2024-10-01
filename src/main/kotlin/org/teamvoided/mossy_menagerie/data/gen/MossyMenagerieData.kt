@@ -15,6 +15,7 @@ import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.RegistrySetBuilder
 import org.teamvoided.mossy_menagerie.MossyMenagerie.log
 import org.teamvoided.mossy_menagerie.block.ParentedCarpetBlock
+import org.teamvoided.mossy_menagerie.data.Moss
 import org.teamvoided.mossy_menagerie.init.MossyBlocks
 import org.teamvoided.mossy_menagerie.init.MossyItems
 import org.teamvoided.mossy_menagerie.init.MossyTabs
@@ -58,23 +59,42 @@ object MossyMenagerieData : DataGeneratorEntrypoint {
     class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         override fun generateBlockStateModels(gen: BlockStateModelGenerator) {
             MossyBlocks.BLOCKS.filterIsInstance<ParentedCarpetBlock>().forEach { gen.registerCarpet(it.parent, it) }
+//            Moss.ALL_MOSS.forEach { gen.registerMoss(it) }
         }
 
-        //private val SINGLE_LAYER = listOf<Item>()
         override fun generateItemModels(gen: ItemModelGenerator) = Unit
+
+        //private val SINGLE_LAYER = listOf<Item>()
         /*SINGLE_LAYER.forEach { gen.register(it, Models.SINGLE_LAYER_ITEM) }*/
+        private fun BlockStateModelGenerator.registerMoss(moss: Moss) {
+            this.registerCarpet(moss.block, moss.carpet)
+            this.registerCarpet(moss.floweringBlock, moss.floweringCarpet)
+        }
     }
 
     //Data
     class BlockLootTableProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
         FabricBlockLootTableProvider(o, r) {
-        override fun generate() = MossyBlocks.BLOCKS.forEach(::addDrop)
+        override fun generate() {
+            Moss.ALL_MOSS.forEach(::mossDrops)
+            MossyBlocks.BLOCKS.forEach(::addDrop)
+        }
+
+        private fun mossDrops(moss: Moss) {
+            listOf(moss.block, moss.carpet, moss.floweringBlock, moss.floweringCarpet).forEach(::addDrop)
+        }
     }
 
     class RecipeProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
         FabricRecipeProvider(o, r) {
         override fun generateRecipes(gen: RecipeExporter) {
             MossyBlocks.BLOCKS.filterIsInstance<ParentedCarpetBlock>().forEach { offerCarpetRecipe(gen, it, it.parent) }
+//            Moss.ALL_MOSS.forEach { gen.mossRecipes(it) }
+        }
+
+        private fun RecipeExporter.mossRecipes(moss: Moss) {
+            offerCarpetRecipe(this, moss.carpet, moss.block)
+            offerCarpetRecipe(this, moss.floweringCarpet, moss.floweringBlock)
         }
     }
 }

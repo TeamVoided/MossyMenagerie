@@ -7,40 +7,48 @@ import net.minecraft.block.MapColor
 import net.minecraft.registry.Registries
 import org.teamvoided.mossy_menagerie.block.MossyBlock
 import org.teamvoided.mossy_menagerie.block.ParentedCarpetBlock
+import org.teamvoided.mossy_menagerie.data.Moss
 import org.teamvoided.mossy_menagerie.utils.BlockItem
 import org.teamvoided.mossy_menagerie.utils.addAndGet
 import org.teamvoided.mossy_menagerie.utils.register
 import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures as Mcf
 
-@Suppress("unused", "MemberVisibilityCanBePrivate")
+@Suppress("MemberVisibilityCanBePrivate")
 object MossyBlocks {
     val BLOCKS = mutableSetOf<Block>()
     fun init() = Unit
 
-    val FIRE_MOSS = register("fire_moss", MossyBlock(Mcf.FIRE_MOSS_PATCH_BONE_MEAL, moss(MapColor.RED_TERRACOTTA)))
-    val FIRE_MOSS_CARPET = register("fire_moss_carpet", ParentedCarpetBlock((FIRE_MOSS)))
 
-    val RUSTY_MOSS =
-        register("rusty_moss", MossyBlock(Mcf.RUSTY_MOSS_PATCH_BONE_MEAL, moss(MapColor.ORANGE_TERRACOTTA)))
-    val RUSTY_MOSS_CARPET = register("rusty_moss_carpet", ParentedCarpetBlock((RUSTY_MOSS)))
+    val CRIMSON_MOSS = Moss.create("crimson")
+        .mapColor(MapColor.RED_TERRACOTTA)
+        .mossFeature(Mcf.CRIMSON_MOSS_PATCH_BONE_MEAL)
+        .build(::register)
 
-    val RICH_MOSS = register("rich_moss", MossyBlock(Mcf.RICH_MOSS_PATCH_BONE_MEAL, moss(MapColor.YELLOW_TERRACOTTA)))
-    val RICH_MOSS_CARPET = register("rich_moss_carpet", ParentedCarpetBlock((RICH_MOSS)))
+//    val CRIMSON_MOSS =
+//        register("crimson_moss", MossyBlock(Mcf.CRIMSON_MOSS_PATCH_BONE_MEAL, moss(MapColor.RED_TERRACOTTA)))
+//    val CRIMSON_MOSS_CARPET = register("crimson_moss_carpet", ParentedCarpetBlock((CRIMSON_MOSS)))
+
+    val MAGMATIC_MOSS =
+        register("magmatic_moss", MossyBlock(Mcf.MAGMATIC_MOSS_PATCH_BONE_MEAL, moss(MapColor.ORANGE_TERRACOTTA)))
+    val MAGMATIC_MOSS_CARPET = register("magmatic_moss_carpet", ParentedCarpetBlock((MAGMATIC_MOSS)))
+
+    val ROYAL_MOSS = register("royal_moss", MossyBlock(Mcf.ROSY_MOSS_PATCH_BONE_MEAL, moss(MapColor.YELLOW_TERRACOTTA)))
+    val ROYAL_MOSS_CARPET = register("royal_moss_carpet", ParentedCarpetBlock((ROYAL_MOSS)))
+
+    val GLOWING_MOSS =
+        register("glowing_moss", MossyBlock(Mcf.GLOWING_MOSS_PATCH_BONE_MEAL, moss(MapColor.LIME_TERRACOTTA)))
+    val GLOWING_MOSS_CARPET = register("glowing_moss_carpet", ParentedCarpetBlock((GLOWING_MOSS)))
 
     val DARK_MOSS = register("dark_moss", MossyBlock(Mcf.DARK_MOSS_PATCH_BONE_MEAL, moss(MapColor.GREEN_TERRACOTTA)))
     val DARK_MOSS_CARPET = register("dark_moss_carpet", ParentedCarpetBlock((DARK_MOSS)))
-
-    val BRIGHT_MOSS =
-        register("bright_moss", MossyBlock(Mcf.BRIGHT_MOSS_PATCH_BONE_MEAL, moss(MapColor.LIME_TERRACOTTA)))
-    val BRIGHT_MOSS_CARPET = register("bright_moss_carpet", ParentedCarpetBlock((BRIGHT_MOSS)))
 
     val MARITIME_MOSS =
         register("maritime_moss", MossyBlock(Mcf.MARITIME_MOSS_PATCH_BONE_MEAL, moss(MapColor.CYAN_TERRACOTTA)))
     val MARITIME_MOSS_CARPET = register("maritime_moss_carpet", ParentedCarpetBlock((MARITIME_MOSS)))
 
-    val FROST_MOSS =
-        register("frost_moss", MossyBlock(Mcf.FROST_MOSS_PATCH_BONE_MEAL, moss(MapColor.LIGHT_BLUE_TERRACOTTA)))
-    val FROST_MOSS_CARPET = register("frost_moss_carpet", ParentedCarpetBlock((FROST_MOSS)))
+    val WARPED_MOSS =
+        register("warped_moss", MossyBlock(Mcf.WARPED_MOSS_PATCH_BONE_MEAL, moss(MapColor.LIGHT_BLUE_TERRACOTTA)))
+    val WARPED_MOSS_CARPET = register("warped_moss_carpet", ParentedCarpetBlock((WARPED_MOSS)))
 
     val AZURE_MOSS = register("azure_moss", MossyBlock(Mcf.AZURE_MOSS_PATCH_BONE_MEAL, moss(MapColor.BLUE_TERRACOTTA)))
     val AZURE_MOSS_CARPET = register("azure_moss_carpet", ParentedCarpetBlock((AZURE_MOSS)))
@@ -56,9 +64,9 @@ object MossyBlocks {
     val ROSY_MOSS = register("rosy_moss", MossyBlock(Mcf.ROSY_MOSS_PATCH_BONE_MEAL, moss(MapColor.PINK_TERRACOTTA)))
     val ROSY_MOSS_CARPET = register("rosy_moss_carpet", ParentedCarpetBlock((ROSY_MOSS)))
 
-    val WOODED_MOSS =
-        register("wooded_moss", MossyBlock(Mcf.WOODED_MOSS_PATCH_BONE_MEAL, moss(MapColor.BROWN_TERRACOTTA)))
-    val WOODED_MOSS_CARPET = register("wooded_moss_carpet", ParentedCarpetBlock((WOODED_MOSS)))
+    val ANCIENT_MOSS =
+        register("ancient_moss", MossyBlock(Mcf.ANCIENT_MOSS_PATCH_BONE_MEAL, moss(MapColor.BROWN_TERRACOTTA)))
+    val ANCIENT_MOSS_CARPET = register("ancient_moss_carpet", ParentedCarpetBlock((ANCIENT_MOSS)))
 
     val ASHEN_MOSS = register("ashen_moss", MossyBlock(Mcf.ASHEN_MOSS_PATCH_BONE_MEAL, moss(MapColor.BLACK_TERRACOTTA)))
     val ASHEN_MOSS_CARPET = register("ashen_moss_carpet", ParentedCarpetBlock((ASHEN_MOSS)))
@@ -75,8 +83,7 @@ object MossyBlocks {
     val BONE_MOSS_CARPET = register("bone_moss_carpet", ParentedCarpetBlock((BONE_MOSS)))
 
 
-    fun moss(color: MapColor) = copy(Blocks.MOSS_BLOCK).mapColor(color)
-
+    fun moss(color: MapColor): AbstractBlock.Settings = copy(Blocks.MOSS_BLOCK).mapColor(color)
     fun copy(block: Block): AbstractBlock.Settings = AbstractBlock.Settings.copy(block)
 
     fun <T : Block> register(name: String, block: T): Block {

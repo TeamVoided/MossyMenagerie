@@ -10,6 +10,7 @@ import net.minecraft.registry.tag.ItemTags
 import net.minecraft.world.biome.Biome
 import net.minecraft.world.biome.Biomes
 import org.teamvoided.mossy_menagerie.block.ParentedCarpetBlock
+import org.teamvoided.mossy_menagerie.data.Moss
 import org.teamvoided.mossy_menagerie.data.tags.MossyBiomeTags
 import org.teamvoided.mossy_menagerie.data.tags.MossyBlockTags
 import org.teamvoided.mossy_menagerie.init.MossyBlocks
@@ -33,6 +34,8 @@ class BlockTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pr
             getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(it.parent)
             getOrCreateTagBuilder(MossyBlockTags.MOSS).add(it.parent)
         }
+        Moss.ALL_MOSS.forEach(::addTags)
+
         getOrCreateTagBuilder(MossyBlockTags.MOSS).add(Blocks.MOSS_BLOCK)
         getOrCreateTagBuilder(MossyBlockTags.MOSS_CARPETS)
             .add(Blocks.MOSS_CARPET)
@@ -47,6 +50,21 @@ class BlockTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pr
             .add(Blocks.TORCH, Blocks.REDSTONE_TORCH, Blocks.SOUL_TORCH)
             .add(Blocks.WALL_TORCH, Blocks.REDSTONE_WALL_TORCH, Blocks.SOUL_WALL_TORCH)
     }
+
+    private fun addTags(moss: Moss) {
+        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+            .add(moss.block, moss.carpet, moss.floweringBlock, moss.floweringCarpet)
+
+        getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(moss.carpet, moss.floweringCarpet)
+        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(moss.carpet, moss.floweringCarpet)
+        getOrCreateTagBuilder(MossyBlockTags.MOSSY_CARPETS).add(moss.carpet, moss.floweringCarpet)
+
+        getOrCreateTagBuilder(BlockTags.DIRT).add(moss.block, moss.floweringBlock)
+        getOrCreateTagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(moss.block, moss.floweringBlock)
+        getOrCreateTagBuilder(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(moss.block, moss.floweringBlock)
+        getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(moss.block, moss.floweringBlock)
+        getOrCreateTagBuilder(MossyBlockTags.MOSS).add(moss.block, moss.floweringBlock)
+    }
 }
 
 class ItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>, p: BlockTagProvider) :
@@ -59,7 +77,6 @@ class ItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
 class BiomeTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
     FabricTagProvider<Biome>(o, RegistryKeys.BIOME, r) {
     override fun configure(wrapperLookup: HolderLookup.Provider) {
-        getOrCreateTagBuilder(MossyBiomeTags.HAS_DARK_MOSS)
-            .add(Biomes.DARK_FOREST)
+        getOrCreateTagBuilder(MossyBiomeTags.HAS_DARK_MOSS).add(Biomes.DARK_FOREST)
     }
 }

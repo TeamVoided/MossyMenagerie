@@ -12,12 +12,12 @@ import org.teamvoided.mossy_menagerie.data.world.gen.MossyPlacedFeatures as Mpf
 
 object MossyBiomeModifiers {
     fun init() {
-        addVegetalDeco("fire_moss", BiomeSelectors.foundInTheNether(), Mpf.FIRE_MOSS_PATCH)
-        addVegetalDeco("fire_moss", BiomeSelectors.tag(MossyBiomeTags.HAS_DARK_MOSS), Mpf.DARK_MOSS_PATCH)
+        addVegetalDeco("crimson_moss", BiomeSelectors.foundInTheNether(), Mpf.CRIMSON_MOSS_PATCH)
+        addVegetalDeco("dark_moss", BiomeSelectors.tag(MossyBiomeTags.HAS_DARK_MOSS), Mpf.DARK_MOSS_PATCH)
     }
 
     fun addVegetalDeco(name: String, selector: Predicate<BiomeSelectionContext>, feature: RegistryKey<PlacedFeature>) =
-        addFeature(name, selector) {
+        addFeature("add_$name", selector) {
             it.generationSettings.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, feature)
         }
 
