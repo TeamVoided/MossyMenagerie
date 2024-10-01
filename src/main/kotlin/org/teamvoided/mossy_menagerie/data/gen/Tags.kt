@@ -77,6 +77,6 @@ class ItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
 class BiomeTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
     FabricTagProvider<Biome>(o, RegistryKeys.BIOME, r) {
     override fun configure(wrapperLookup: HolderLookup.Provider) {
-        getOrCreateTagBuilder(MossyBiomeTags.HAS_DARK_MOSS).add(Biomes.DARK_FOREST)
+        getOrCreateTagBuilder(MossyBiomeTags.HAS_GLOOMING_MOSS).add(Biomes.DARK_FOREST)
     }
 }

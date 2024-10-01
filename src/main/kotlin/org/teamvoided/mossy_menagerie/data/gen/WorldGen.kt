@@ -57,10 +57,10 @@ fun bootstrapConfiguredFeatures(c: BootstrapContext<ConfiguredFeature<*, *>>) {
         Mb.ROYAL_MOSS,
     )
     c.makeMossy(
-        Mcf.DARK_MOSS_VEGETATION,
-        Mcf.DARK_MOSS_PATCH,
-        Mcf.DARK_MOSS_PATCH_BONE_MEAL,
-        Mb.DARK_MOSS,
+        Mcf.GLOOMING_MOSS_VEGETATION,
+        Mcf.GLOOMING_MOSS_PATCH,
+        Mcf.GLOOMING_MOSS_PATCH_BONE_MEAL,
+        Mb.GLOOMING_MOSS,
     )
     c.makeMossy(
         Mcf.GLOWING_MOSS_VEGETATION,
@@ -151,8 +151,8 @@ fun bootstrapPlacedFeatures(c: BootstrapContext<PlacedFeature>) {
     )
     PlacedFeatureUtil.register(
         c,
-        Mpf.DARK_MOSS_PATCH,
-        cfgFeat.getHolderOrThrow(Mcf.DARK_MOSS_PATCH),
+        Mpf.GLOOMING_MOSS_PATCH,
+        cfgFeat.getHolderOrThrow(Mcf.GLOOMING_MOSS_PATCH),
         CountPlacementModifier.create(10),
         InSquarePlacementModifier.getInstance(),
         PlacedFeatureUtil.BOTTOM_TO_MAX_TERRAIN_HEIGHT_RANGE,

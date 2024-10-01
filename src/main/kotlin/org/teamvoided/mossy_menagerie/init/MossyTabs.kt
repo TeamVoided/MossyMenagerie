@@ -12,7 +12,7 @@ import org.teamvoided.mossy_menagerie.utils.text
 
 object MossyTabs {
     val MOSSY_TAB = register("mossy_tab", FabricItemGroup.builder()
-        .icon(MossyBlocks.DARK_MOSS)
+        .icon(MossyBlocks.GLOOMING_MOSS.floweringBlock)
         .name("itemGroup.$MODID.mossy_tab")
         .tabBuilder { addStacks(MossyItems.ITEMS.map(Item::getDefaultStack)) }
     )

@@ -23,9 +23,9 @@ object MossyConfiguredFeatures {
     val GLOWING_MOSS_PATCH = create("glowing_moss_patch")
     val GLOWING_MOSS_PATCH_BONE_MEAL = create("glowing_moss_patch_bone_meal")
 
-    val DARK_MOSS_VEGETATION = create("dark_moss_vegetation")
-    val DARK_MOSS_PATCH = create("dark_moss_patch")
-    val DARK_MOSS_PATCH_BONE_MEAL = create("dark_moss_patch_bone_meal")
+    val GLOOMING_MOSS_VEGETATION = create("glooming_moss_vegetation")
+    val GLOOMING_MOSS_PATCH = create("glooming_moss_patch")
+    val GLOOMING_MOSS_PATCH_BONE_MEAL = create("glooming_moss_patch_bone_meal")
 
     val MARITIME_MOSS_VEGETATION = create("maritime_moss_vegetation")
     val MARITIME_MOSS_PATCH = create("maritime_moss_patch")

@@ -41,9 +41,9 @@ object MossyBlocks {
         .mossFeature(Mcf.GLOWING_MOSS_PATCH_BONE_MEAL)
         .build(::register, ::registerNoItem)
 
-    val DARK_MOSS = Moss.create("dark")
+    val GLOOMING_MOSS = Moss.create("glooming")
         .mapColor(MapColor.GREEN_TERRACOTTA)
-        .mossFeature(Mcf.DARK_MOSS_PATCH_BONE_MEAL)
+        .mossFeature(Mcf.GLOOMING_MOSS_PATCH_BONE_MEAL)
         .build(::register, ::registerNoItem)
 
     val MARITIME_MOSS = Moss.create("maritime")

@@ -5,7 +5,7 @@ import org.teamvoided.mossy_menagerie.MossyMenagerie.id
 import org.teamvoided.mossy_menagerie.utils.tag
 
 object MossyBiomeTags {
-    val HAS_DARK_MOSS = has("dark_moss")
+    val HAS_GLOOMING_MOSS = has("glooming_moss")
 
 
     private fun has(name: String) = create("has/$name")

@@ -11,7 +11,7 @@ object MossyPlacedFeatures {
     val MAGMATIC_MOSS_PATCH = create("magmatic_moss_patch")
 //    val ROYAL_MOSS_PATCH = create("royal_moss_patch")
     val GLOWING_MOSS_PATCH = create("glowing_moss_patch")
-    val DARK_MOSS_PATCH = create("dark_moss_patch")
+    val GLOOMING_MOSS_PATCH = create("glooming_moss_patch")
     val MARITIME_MOSS_PATCH = create("maritime_moss_patch")
     val WARPED_MOSS_PATCH = create("warped_moss_patch")
     val AZURE_MOSS_PATCH = create("azure_moss_patch")
