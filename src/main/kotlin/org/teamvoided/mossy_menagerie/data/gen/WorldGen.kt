@@ -2,7 +2,6 @@ package org.teamvoided.mossy_menagerie.data.gen
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
-import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
 import net.minecraft.registry.BootstrapContext
@@ -22,6 +21,7 @@ import net.minecraft.world.gen.feature.util.ConfiguredFeatureUtil
 import net.minecraft.world.gen.feature.util.PlacedFeatureUtil
 import net.minecraft.world.gen.stateprovider.BlockStateProvider
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider
+import org.teamvoided.mossy_menagerie.data.Moss
 import org.teamvoided.mossy_menagerie.init.MossyFeatures.MOSSY_VEGETATION_PATCH
 import java.util.concurrent.CompletableFuture
 import org.teamvoided.mossy_menagerie.data.world.gen.MossyConfiguredFeatures as Mcf
@@ -42,97 +42,97 @@ fun bootstrapConfiguredFeatures(c: BootstrapContext<ConfiguredFeature<*, *>>) {
         Mcf.CRIMSON_MOSS_VEGETATION,
         Mcf.CRIMSON_MOSS_PATCH,
         Mcf.CRIMSON_MOSS_PATCH_BONE_MEAL,
-        Mb.CRIMSON_MOSS.block, Mb.CRIMSON_MOSS.carpet
+        Mb.CRIMSON_MOSS
     )
     c.makeMossy(
         Mcf.MAGMATIC_MOSS_VEGETATION,
         Mcf.MAGMATIC_MOSS_PATCH,
         Mcf.MAGMATIC_MOSS_PATCH_BONE_MEAL,
-        Mb.MAGMATIC_MOSS, Mb.MAGMATIC_MOSS_CARPET
+        Mb.MAGMATIC_MOSS,
     )
     c.makeMossy(
         Mcf.ROYAL_MOSS_VEGETATION,
         Mcf.ROYAL_MOSS_PATCH,
         Mcf.ROYAL_MOSS_PATCH_BONE_MEAL,
-        Mb.ROYAL_MOSS, Mb.ROYAL_MOSS_CARPET
+        Mb.ROYAL_MOSS,
     )
     c.makeMossy(
         Mcf.DARK_MOSS_VEGETATION,
         Mcf.DARK_MOSS_PATCH,
         Mcf.DARK_MOSS_PATCH_BONE_MEAL,
-        Mb.DARK_MOSS, Mb.DARK_MOSS_CARPET
+        Mb.DARK_MOSS,
     )
     c.makeMossy(
         Mcf.GLOWING_MOSS_VEGETATION,
         Mcf.GLOWING_MOSS_PATCH,
         Mcf.GLOWING_MOSS_PATCH_BONE_MEAL,
-        Mb.GLOWING_MOSS, Mb.GLOWING_MOSS_CARPET
+        Mb.GLOWING_MOSS,
     )
     c.makeMossy(
         Mcf.MARITIME_MOSS_VEGETATION,
         Mcf.MARITIME_MOSS_PATCH,
         Mcf.MARITIME_MOSS_PATCH_BONE_MEAL,
-        Mb.MARITIME_MOSS, Mb.MARITIME_MOSS_CARPET
+        Mb.MARITIME_MOSS
     )
     c.makeMossy(
         Mcf.WARPED_MOSS_VEGETATION,
         Mcf.WARPED_MOSS_PATCH,
         Mcf.WARPED_MOSS_PATCH_BONE_MEAL,
-        Mb.WARPED_MOSS, Mb.WARPED_MOSS_CARPET
+        Mb.WARPED_MOSS,
     )
     c.makeMossy(
         Mcf.AZURE_MOSS_VEGETATION,
         Mcf.AZURE_MOSS_PATCH,
         Mcf.AZURE_MOSS_PATCH_BONE_MEAL,
-        Mb.AZURE_MOSS, Mb.AZURE_MOSS_CARPET
+        Mb.AZURE_MOSS,
     )
     c.makeMossy(
         Mcf.ARCANE_MOSS_VEGETATION,
         Mcf.ARCANE_MOSS_PATCH,
         Mcf.ARCANE_MOSS_PATCH_BONE_MEAL,
-        Mb.ARCANE_MOSS, Mb.ARCANE_MOSS_CARPET
+        Mb.ARCANE_MOSS,
     )
     c.makeMossy(
         Mcf.TWISTED_MOSS_VEGETATION,
         Mcf.TWISTED_MOSS_PATCH,
         Mcf.TWISTED_MOSS_PATCH_BONE_MEAL,
-        Mb.TWISTED_MOSS, Mb.TWISTED_MOSS_CARPET
+        Mb.TWISTED_MOSS,
     )
     c.makeMossy(
         Mcf.ROSY_MOSS_VEGETATION,
         Mcf.ROSY_MOSS_PATCH,
         Mcf.ROSY_MOSS_PATCH_BONE_MEAL,
-        Mb.ROSY_MOSS, Mb.ROSY_MOSS_CARPET
+        Mb.ROSY_MOSS,
     )
     c.makeMossy(
         Mcf.ANCIENT_MOSS_VEGETATION,
         Mcf.ANCIENT_MOSS_PATCH,
         Mcf.ANCIENT_MOSS_PATCH_BONE_MEAL,
-        Mb.ANCIENT_MOSS, Mb.ANCIENT_MOSS_CARPET
+        Mb.ANCIENT_MOSS,
     )
     c.makeMossy(
         Mcf.ASHEN_MOSS_VEGETATION,
         Mcf.ASHEN_MOSS_PATCH,
         Mcf.ASHEN_MOSS_PATCH_BONE_MEAL,
-        Mb.ASHEN_MOSS, Mb.ASHEN_MOSS_CARPET
+        Mb.ASHEN_MOSS,
     )
     c.makeMossy(
         Mcf.CHROME_MOSS_VEGETATION,
         Mcf.CHROME_MOSS_PATCH,
         Mcf.CHROME_MOSS_PATCH_BONE_MEAL,
-        Mb.CHROME_MOSS, Mb.CHROME_MOSS_CARPET
+        Mb.CHROME_MOSS,
     )
     c.makeMossy(
         Mcf.DUSKY_MOSS_VEGETATION,
         Mcf.DUSKY_MOSS_PATCH,
         Mcf.DUSKY_MOSS_PATCH_BONE_MEAL,
-        Mb.DUSKY_MOSS, Mb.DUSKY_MOSS_CARPET
+        Mb.DUSKY_MOSS,
     )
     c.makeMossy(
         Mcf.BONE_MOSS_VEGETATION,
         Mcf.BONE_MOSS_PATCH,
         Mcf.BONE_MOSS_PATCH_BONE_MEAL,
-        Mb.BONE_MOSS, Mb.BONE_MOSS_CARPET
+        Mb.BONE_MOSS,
     )
 }
 
@@ -166,8 +166,7 @@ fun BootstrapContext<ConfiguredFeature<*, *>>.makeMossy(
     vegetation: RegistryKey<ConfiguredFeature<*, *>>,
     worldGen: RegistryKey<ConfiguredFeature<*, *>>,
     boneMeal: RegistryKey<ConfiguredFeature<*, *>>,
-    moss: Block,
-    mossCarpet: Block,
+    moss: Moss
 ) {
     val cfgFeat = this.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE)
     ConfiguredFeatureUtil.register(
@@ -179,7 +178,7 @@ fun BootstrapContext<ConfiguredFeature<*, *>>.makeMossy(
                 DataPool.builder<BlockState>()
 //                    .addWeighted(Blocks.FLOWERING_AZALEA.defaultState, 4)
 //                    .addWeighted(Blocks.AZALEA.defaultState, 7)
-                    .addWeighted(mossCarpet.defaultState, 25)
+                    .addWeighted(moss.carpet.defaultState, 25)
                     .addWeighted(Blocks.SHORT_GRASS.defaultState, 50)
                     .addWeighted(Blocks.TALL_GRASS.defaultState, 10)
             )
@@ -191,7 +190,7 @@ fun BootstrapContext<ConfiguredFeature<*, *>>.makeMossy(
         MOSSY_VEGETATION_PATCH,
         VegetationPatchFeatureConfig(
             BlockTags.MOSS_REPLACEABLE,
-            BlockStateProvider.of(moss),
+            BlockStateProvider.of(moss.get()),
             PlacedFeatureUtil.placedInline(cfgFeat.getHolderOrThrow(vegetation)),
             VerticalSurfaceType.FLOOR,
             ConstantIntProvider.create(1), 0.0f, 5, 0.8f, UniformIntProvider.create(4, 7), 0.3f
@@ -203,7 +202,7 @@ fun BootstrapContext<ConfiguredFeature<*, *>>.makeMossy(
         MOSSY_VEGETATION_PATCH,
         VegetationPatchFeatureConfig(
             BlockTags.MOSS_REPLACEABLE,
-            BlockStateProvider.of(moss),
+            BlockStateProvider.of(moss.get()),
             PlacedFeatureUtil.placedInline(cfgFeat.getHolderOrThrow(vegetation)),
             VerticalSurfaceType.FLOOR,
             ConstantIntProvider.create(1), 0.0f, 5, 0.6f, UniformIntProvider.create(1, 2), 0.75f

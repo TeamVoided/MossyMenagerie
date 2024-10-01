@@ -9,7 +9,6 @@ import net.minecraft.registry.tag.BlockTags
 import net.minecraft.registry.tag.ItemTags
 import net.minecraft.world.biome.Biome
 import net.minecraft.world.biome.Biomes
-import org.teamvoided.mossy_menagerie.block.ParentedCarpetBlock
 import org.teamvoided.mossy_menagerie.data.Moss
 import org.teamvoided.mossy_menagerie.data.tags.MossyBiomeTags
 import org.teamvoided.mossy_menagerie.data.tags.MossyBlockTags
@@ -20,22 +19,9 @@ import java.util.concurrent.CompletableFuture
 class BlockTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
     FabricTagProvider.BlockTagProvider(o, r) {
     override fun configure(wrapperLookup: HolderLookup.Provider) {
-        val mineableHoe = getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
-        MossyBlocks.BLOCKS.filterIsInstance<ParentedCarpetBlock>().forEach {
-            mineableHoe.add(it)
-            getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(it)
-            getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(it)
-            getOrCreateTagBuilder(MossyBlockTags.MOSSY_CARPETS).add(it)
-
-            mineableHoe.add(it.parent)
-            getOrCreateTagBuilder(BlockTags.DIRT).add(it.parent)
-            getOrCreateTagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(it.parent)
-            getOrCreateTagBuilder(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(it.parent)
-            getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(it.parent)
-            getOrCreateTagBuilder(MossyBlockTags.MOSS).add(it.parent)
-        }
         Moss.ALL_MOSS.forEach(::addTags)
 
+        floweringMoss()
         getOrCreateTagBuilder(MossyBlockTags.MOSS).add(Blocks.MOSS_BLOCK)
         getOrCreateTagBuilder(MossyBlockTags.MOSS_CARPETS)
             .add(Blocks.MOSS_CARPET)
@@ -49,6 +35,20 @@ class BlockTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pr
             .forceAddTag(MossyBlockTags.MOSS_CARPETS)
             .add(Blocks.TORCH, Blocks.REDSTONE_TORCH, Blocks.SOUL_TORCH)
             .add(Blocks.WALL_TORCH, Blocks.REDSTONE_WALL_TORCH, Blocks.SOUL_WALL_TORCH)
+    }
+
+    private fun floweringMoss() {
+        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(MossyBlocks.FLOWERING_MOSS, MossyBlocks.FLOWERING_MOSS_CARPET)
+
+        getOrCreateTagBuilder(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(MossyBlocks.FLOWERING_MOSS_CARPET)
+        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(MossyBlocks.FLOWERING_MOSS_CARPET)
+        getOrCreateTagBuilder(MossyBlockTags.MOSSY_CARPETS).add(MossyBlocks.FLOWERING_MOSS_CARPET)
+
+        getOrCreateTagBuilder(BlockTags.DIRT).add(MossyBlocks.FLOWERING_MOSS)
+        getOrCreateTagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(MossyBlocks.FLOWERING_MOSS)
+        getOrCreateTagBuilder(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(MossyBlocks.FLOWERING_MOSS)
+        getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(MossyBlocks.FLOWERING_MOSS)
+        getOrCreateTagBuilder(MossyBlockTags.MOSS).add(MossyBlocks.FLOWERING_MOSS)
     }
 
     private fun addTags(moss: Moss) {

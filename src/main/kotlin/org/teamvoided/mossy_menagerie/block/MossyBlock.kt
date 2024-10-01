@@ -20,4 +20,4 @@ class MossyBlock(val mossFeature: RegistryKey<ConfiguredFeature<*, *>>, settings
         world.registryManager.getOptional(RegistryKeys.CONFIGURED_FEATURE).flatMap { it.getHolder(mossFeature) }
             .ifPresent { it.value().generate(world, world.chunkManager.chunkGenerator, random, pos.up()) }
     }
-}
+        }

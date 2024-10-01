@@ -2,6 +2,8 @@ package org.teamvoided.mossy_menagerie.data
 
 import net.minecraft.block.Block
 import net.minecraft.block.MapColor
+import net.minecraft.item.Item
+import net.minecraft.item.ItemConvertible
 import net.minecraft.registry.RegistryKey
 import net.minecraft.world.gen.feature.ConfiguredFeature
 import net.minecraft.world.gen.feature.UndergroundConfiguredFeatures
@@ -14,11 +16,11 @@ data class Moss(
     val name: String,
     val block: MossyBlock, val carpet: ParentedCarpetBlock,
     val floweringBlock: MossyBlock, val floweringCarpet: ParentedCarpetBlock
-) : Supplier<Block> {
+) : Supplier<Block>, ItemConvertible {
     override fun get(): Block = block
+    override fun asItem(): Item = block.asItem()
     fun forEach(consumer: (Block) -> Unit) = getAll().forEach(consumer)
     fun getAll(): List<Block> = listOf(block, carpet, floweringBlock, floweringCarpet)
-
     companion object {
         fun create(name: String) = Builder(name)
         val ALL_MOSS = mutableSetOf<Moss>()
@@ -55,4 +57,6 @@ data class Moss(
             ).register(creator, add)
         }
     }
+
+
 }

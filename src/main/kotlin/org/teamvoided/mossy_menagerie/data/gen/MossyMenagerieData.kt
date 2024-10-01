@@ -4,23 +4,15 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
-import net.minecraft.data.client.ItemModelGenerator
-import net.minecraft.data.client.model.BlockStateModelGenerator
+import net.minecraft.block.Block
 import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.RegistrySetBuilder
 import org.teamvoided.mossy_menagerie.MossyMenagerie.log
-import org.teamvoided.mossy_menagerie.block.ParentedCarpetBlock
 import org.teamvoided.mossy_menagerie.data.Moss
 import org.teamvoided.mossy_menagerie.init.MossyBlocks
-import org.teamvoided.mossy_menagerie.init.MossyItems
-import org.teamvoided.mossy_menagerie.init.MossyTabs
-import org.teamvoided.mossy_menagerie.utils.lang
-import org.teamvoided.mossy_menagerie.utils.toId
 import java.util.concurrent.CompletableFuture
 
 @Suppress("unused")
@@ -47,37 +39,13 @@ object MossyMenagerieData : DataGeneratorEntrypoint {
         gen.add(RegistryKeys.PLACED_FEATURE, ::bootstrapPlacedFeatures)
     }
 
-    //Assets
-    class EnLangProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
-        FabricLanguageProvider(o, r) {
-        override fun generateTranslations(lookup: HolderLookup.Provider, gen: TranslationBuilder) {
-            MossyItems.ITEMS.forEach { gen.add(it.translationKey, it.toId().lang()) }
-            MossyTabs.MOSSY_TAB.key.ifPresent { gen.add(it, "Mossy Menagerie") }
-        }
-    }
-
-    class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
-        override fun generateBlockStateModels(gen: BlockStateModelGenerator) {
-            MossyBlocks.BLOCKS.filterIsInstance<ParentedCarpetBlock>().forEach { gen.registerCarpet(it.parent, it) }
-//            Moss.ALL_MOSS.forEach { gen.registerMoss(it) }
-        }
-
-        override fun generateItemModels(gen: ItemModelGenerator) = Unit
-
-        //private val SINGLE_LAYER = listOf<Item>()
-        /*SINGLE_LAYER.forEach { gen.register(it, Models.SINGLE_LAYER_ITEM) }*/
-        private fun BlockStateModelGenerator.registerMoss(moss: Moss) {
-            this.registerCarpet(moss.block, moss.carpet)
-            this.registerCarpet(moss.floweringBlock, moss.floweringCarpet)
-        }
-    }
-
     //Data
     class BlockLootTableProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
         FabricBlockLootTableProvider(o, r) {
+            val dropSelf = listOf(MossyBlocks.FLOWERING_MOSS, MossyBlocks.FLOWERING_MOSS_CARPET)
         override fun generate() {
             Moss.ALL_MOSS.forEach(::mossDrops)
-            MossyBlocks.BLOCKS.forEach(::addDrop)
+            dropSelf.forEach(::addDrop)
         }
 
         private fun mossDrops(moss: Moss) {
@@ -88,13 +56,17 @@ object MossyMenagerieData : DataGeneratorEntrypoint {
     class RecipeProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
         FabricRecipeProvider(o, r) {
         override fun generateRecipes(gen: RecipeExporter) {
-            MossyBlocks.BLOCKS.filterIsInstance<ParentedCarpetBlock>().forEach { offerCarpetRecipe(gen, it, it.parent) }
-//            Moss.ALL_MOSS.forEach { gen.mossRecipes(it) }
+            gen.offerCarpetRecipe(MossyBlocks.FLOWERING_MOSS_CARPET, MossyBlocks.FLOWERING_MOSS)
+            Moss.ALL_MOSS.forEach { gen.mossRecipes(it) }
         }
 
         private fun RecipeExporter.mossRecipes(moss: Moss) {
-            offerCarpetRecipe(this, moss.carpet, moss.block)
-            offerCarpetRecipe(this, moss.floweringCarpet, moss.floweringBlock)
+            this.offerCarpetRecipe(moss.carpet, moss.block)
+            this.offerCarpetRecipe(moss.floweringCarpet, moss.floweringBlock)
         }
+
+        private fun RecipeExporter.offerCarpetRecipe(carpet: Block, block: Block) =
+            offerCarpetRecipe(this, carpet, block)
     }
 }
+
